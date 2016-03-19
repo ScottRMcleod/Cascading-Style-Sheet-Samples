@@ -4,13 +4,13 @@
 <link rel="stylesheet" type="text/css" href="regStyle.css"></link>
 <link rel="stylesheet" type="text/css" href="calender.css"></link>
 <style>
-a.date{ text-decoration:none; color: #000000;
-}
-a{ color:#003366; text-decoration:none;}
+	a.date{ text-decoration:none; color: #000000;}
+	a{ color:#003366; text-decoration:none;}
 </style>
 </head>
 <?
 include("../includes/config.php");
+
 	$user_ID = $_POST['userID']; $firstName =$_POST['FirstName'];  
 	$lastName = $_POST['LastName']; $userName = $_POST['UserName']; 
 	$address = $_POST['Address']; $city = $_POST['City']; $country = $_POST['Country'];
@@ -22,10 +22,17 @@ include("../includes/config.php");
 	
 	if(isset($_POST['submit'])) { 
 		//see if submit button is pressed.
-		$query ="INSERT INTO auth_users 
-		(user_id, user_firstname, user_lastname, user_forumname, DOB_month, DOB_year, DOB_day,user_address,
-			user_city, user_state, user_country, user_post, user_password, user_admin, user_email, user_comment, user_since, user_signature, user_image)			Values('','$firstName','$lastName','$userName', '$day', '$month','$year','$address','$city','$state','$country', '$postcode', '$password','$admin', '$Email','$comments',now(),'$signature','$profileImage')";
+		$query ="INSERT INTO auth_users (	
+			user_id, user_firstname, user_lastname, user_forumname, DOB_month, 
+			DOB_year, DOB_day,user_address,user_city, user_state, user_country, 
+			user_post, user_password, user_admin, user_email, user_comment, 
+			user_since, user_signature, user_image)
+			
+			Values('','$firstName','$lastName','$userName', '$day', '$month','$year',
+			'$address','$city','$state','$country', '$postcode', '$password','$admin', 
+			'$Email','$comments',now(),'$signature','$profileImage')";
 		//open the connectio the the server and the database
+		
 		openDB();
 		if(mysql_query($query)){
 			echo "Thank you for Regiesting with Smcleod Technologies
@@ -35,7 +42,10 @@ include("../includes/config.php");
 		}
 		closeDB();
 	//Check image code here
-} else { //display form
+	} 
+	else 
+	{ 
+	//display form
 ?>
 <body>
 <form name="reg" action="<? echo $_SERVER[PHP_SELF];?>" method="post">
@@ -46,119 +56,67 @@ include("../includes/config.php");
 	<td class="tcat">Register at Smcleod Technologies </td>
 </tr>
 <tr>
-
 	<td class="panelsurround">
-	<div class="panel">
-		<div style="width:550px" align="left">
-			<div class="smallfont" style="margin-bottom:3px">
-				Register with Smcleod Technologies, to take advantage of our products and services, Recive regular emails offering special deals in order to  register <span class="smallfont" style="margin-bottom:3px">you must first</span> fillout this form .<br />
-			</div>
-			<fieldset class="fieldset">
-				<legend><strong>Personal Information:</strong></legend>
-				<table cellpadding="0" cellspacing="3" border="0" width="400">
-				<tr>
-					<td>
-						First Name: <br />
-						<input type="text" name="FirstName">				</td>
-					<td>
-						Last Name: <br />
-						 <input type="text" name="LastName" />
-				  </td>
-				</tr>
-
-<tr>									<td>
-
-						User Name: <br />
-
-							<input type="text" name="UserName" />
-
-									</td>
-
-						<td>
-
-						Password: <br />
-
-							<input type="password" name="password" />
-
-									</td>
-
-				</tr>
-
-								<tr>
-
-					<td>
-
-						Date of Birth: <br /></td>
-
-					<td>Day:
-
-					  <select name="day">
-
-					  	<? 
-
-							for($day = 1; $day < 32; $day++ )
-
-							{
-
-								echo "<option value='$day'>$day</option>";
-
-							}
-
+	<div class="panel"> 
+	<div style="width:550px" align="left">
+	<div class="smallfont" style="margin-bottom:3px">
+	Register with Smcleod Technologies, to take advantage of our products and services, Recive regular emails offering special deals in order to  register <span class="smallfont" style="margin-bottom:3px">you must first</span> fillout this form .<br />
+	</div>
+	<fieldset class="fieldset">
+	<legend><strong>Personal Information:</strong></legend>
+	<table cellpadding="0" cellspacing="3" border="0" width="400">
+	<tr>
+		<td>First Name: <br /> <input type="text" name="FirstName"></td>
+		<td>
+		Last Name: <br /><input type="text" name="LastName" />
+		</td>
+	</tr>
+	<tr>
+		<td>User Name: <br /><input type="text" name="UserName" /></td>
+		<td>Password: <br /><input type="password" name="password" />
+		</td>
+	</tr>
+	<tr>
+		<td>Date of Birth: <br /></td>
+		<td>Day:
+		<select name="day">
+	<? 
+		for($day = 1; $day < 32; $day++ )
+		{
+			echo "<option value='$day'>$day</option>";
+		}
 ?>
-
-
-
-</select>Month:
-
-<select name="month"><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option><option value="6">6</option><option value="7">7</option><option value="8">8</option><option value="9">9</option><option value="10">10</option><option value="11">11</option><option value="12">12</option></select><br>
-
+		</select>
+		Month:<select name="month">
+			<option value="1">1</option><option value="2">2</option>
+			<option value="3">3</option><option value="4">4</option>
+			<option value="5">5</option><option value="6">6</option>
+			<option value="7">7</option><option value="8">8</option>
+			<option value="9">9</option><option value="10">10</option>
+			<option value="11">11</option><option value="12">12</option>
+		</select><br>
 Year:<br>
 
 <select name="year">
-
 <? 
-
 	for($year = 1900; $year < 2009; $year++ )
-
 	{
-
 		echo "<option value='$year'>$year</option>";
-
 	}
-
 ?>
+</select>
 
-</select></td>
-
-				
-
-				</tr>
-
-				</table>
-
-			</fieldset>
-
-				<fieldset class="fieldset">
-
-				<legend><strong>Contact Information:</strong>
-
-				</legend>
-
-				<table cellpadding="0" cellspacing="3" border="0" width="400">
-
-				<tr>
-
-					<td colspan="2">Please enter your contact details to become a memeber of Smcleod Technologies.</td>
-
-				</tr>
-
-				<tr>
-
-					<td>
-
-						Email Address:<br />
-
-<input type-"text" size="25" name="Email"/>				</td>
+</td>
+</tr>
+</table>
+</fieldset>
+	<fieldset class="fieldset">
+		<legend><strong>Contact Information:</strong></legend>
+		<table cellpadding="0" cellspacing="3" border="0" width="400"><tr>
+		<td colspan="2">Please enter your contact details to become a memeber of Smcleod Technologies.</td>
+		</tr>
+		<tr>
+			<td>Email Address:<br /><input type-"text" size="25" name="Email"/></td>
 
 					<td>
 
