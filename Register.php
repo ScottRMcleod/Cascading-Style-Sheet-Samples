@@ -1,165 +1,69 @@
 <html>
-
-<!---->
-
 <head>
-
-	<title>Registration Form</title>
-
+<title>Registration Form</title>
 <link rel="stylesheet" type="text/css" href="regStyle.css"></link>
-
 <link rel="stylesheet" type="text/css" href="calender.css"></link>
-
 <style>
-
 a.date{ text-decoration:none; color: #000000;
-
-
-
 }
-
 a{ color:#003366; text-decoration:none;}
-
 </style>
-
 </head>
-
 <?
-
 include("../includes/config.php");
-
-		$user_ID = $_POST['userID']; $firstName =$_POST['FirstName']; 
-
-		$lastName = $_POST['LastName']; $userName = $_POST['UserName']; 
-
-		$address = $_POST['Address']; $city = $_POST['City']; 
-
-		$country = $_POST['Country'];
-
-		$state =$_POST['State']; $postcode = $_POST['Postcode'];
-
-		$password = $_POST['password']; 
-
-		$DOBD = $_POST['day'];
-
-		$DOBM = $_POST['month'];
-
-		$DOBY = $_POST['year'];
-
-		$admin = $_POST['AdminPriv']; 
-
-		$Email = $_POST['Email']; $comments = $_POST['user_comments']; 
-
-		$signature = $_POST['Sign']; $profileImage = $_POST['Profile'];
-
-		$subscribe = $_POST['subscribe'];
-
-		$unsub = $_POST['unsubscrie'];
-
-		if(isset($_POST['submit'])) { 
-
-		
-
+	$user_ID = $_POST['userID']; $firstName =$_POST['FirstName'];  
+	$lastName = $_POST['LastName']; $userName = $_POST['UserName']; 
+	$address = $_POST['Address']; $city = $_POST['City']; $country = $_POST['Country'];
+	$state =$_POST['State']; $postcode = $_POST['Postcode']; $password = $_POST['password']; 
+	$DOBD = $_POST['day'];$DOBM = $_POST['month'];$DOBY = $_POST['year'];
+	$admin = $_POST['AdminPriv']; $Email = $_POST['Email']; $comments = $_POST['user_comments']; 
+	$signature = $_POST['Sign']; $profileImage = $_POST['Profile']; $subscribe = $_POST['subscribe'];
+	$unsub = $_POST['unsubscrie'];
+	
+	if(isset($_POST['submit'])) { 
 		//see if submit button is pressed.
-
-		
-
 		$query ="INSERT INTO auth_users 
-
 		(user_id, user_firstname, user_lastname, user_forumname, DOB_month, DOB_year, DOB_day,user_address,
-
 			user_city, user_state, user_country, user_post, user_password, user_admin, user_email, user_comment, user_since, user_signature, user_image)			Values('','$firstName','$lastName','$userName', '$day', '$month','$year','$address','$city','$state','$country', '$postcode', '$password','$admin', '$Email','$comments',now(),'$signature','$profileImage')";
-
-
-
 		//open the connectio the the server and the database
-
 		openDB();
-
 		if(mysql_query($query)){
-
 			echo "Thank you for Regiesting with Smcleod Technologies
-
 				  <br>Welcome to Smcleod Technologies";
-
+		}else{
+		echo"Something Fields where not correctly entered please try again<b>",mysql_error(),"</b>";
 		}
-
-		else{
-
-			echo"Something Fields where not correctly entered please try again<b>",mysql_error(),"</b>";
-
-		}
-
 		closeDB();
-
-		//Check image code here
-
-
-
+	//Check image code here
 } else { //display form
-
 ?>
-
 <body>
-
 <form name="reg" action="<? echo $_SERVER[PHP_SELF];?>" method="post">
-
 <input type="hidden" name="userID">
-
 <input type="hidden" name="AdminPriv" value="N">
-
 <table class="tborder" cellpadding="6" cellspacing="1" border="0" width="175" >
-
 <tr>
-
 	<td class="tcat">Register at Smcleod Technologies </td>
-
 </tr>
-
 <tr>
 
 	<td class="panelsurround">
-
 	<div class="panel">
-
 		<div style="width:550px" align="left">
-
-		
-
 			<div class="smallfont" style="margin-bottom:3px">
-
 				Register with Smcleod Technologies, to take advantage of our products and services, Recive regular emails offering special deals in order to  register <span class="smallfont" style="margin-bottom:3px">you must first</span> fillout this form .<br />
-
 			</div>
-
-			
-
 			<fieldset class="fieldset">
-
 				<legend><strong>Personal Information:</strong></legend>
-
 				<table cellpadding="0" cellspacing="3" border="0" width="400">
-
 				<tr>
-
 					<td>
-
-					
-
 						First Name: <br />
-
 						<input type="text" name="FirstName">				</td>
-
 					<td>
-
 						Last Name: <br />
-
 						 <input type="text" name="LastName" />
-
 				  </td>
-
-				
-
 				</tr>
 
 <tr>									<td>
@@ -441,25 +345,13 @@ function showCalendar(){
             echo "<td$class><a class='date' href='' onMouseClick=''>$actday</a></td>";
 
         }
-
         echo "</tr>";
-
     }
-
     //Now display the rest of the month
-
     if ($actday < $lastDay["mday"]){
-
         echo "<tr>";
-
-        
-
 		for ($i=0; $i<7;$i++){
-
             $actday++;
-
-            
-
 			if ($actday == $today["mday"]) {
 
                 $class = " class='actday' bgcolor='#840000' 
@@ -539,67 +431,31 @@ showCalendar();
 				</tr>
 
 				</table> <br>
-
-			</fieldset>
-
-			
-
-			<fieldset class="fieldset">
-
+		</fieldset>
+	<fieldset class="fieldset">
 	<legend><strong>Feed Back :</strong></legend>
-
 	<table cellpadding="0" cellspacing="3"  border="0" width="100%">
-
 	<tr>
-
 		<td width="100%" valign="top">
-
 		  Comments:<br><br>
-
 	<textarea name="user_comments" rows="8" cols="40"></textarea><br><br>
-
 	Subscribe to Mailing List: <br><br>
-
 	Yes: <input type="checkbox" name="subscribe" value="Y">
-
 	No: <input type="checkbox" name="unsubscribe" value="N"><br>
-
 	<br><input type="submit" name="submit" value="Submit">
-
-			
-
-			<input type="reset" name="cancel" value="Cancel">
-
-	
-
-			</td>
-
-		<td valign="bottom" align="center"><span id="refresh_imagereg" style="display:none"><a href="#">Refresh Image</a></span>		</td>
-
+	<input type="reset" name="cancel" value="Cancel">
+	</td>
+	<td valign="bottom" align="center"><span id="refresh_imagereg" style="display:none"><a href="#">Refresh Image</a></span></td>
 	</tr>
-
 	</table>
-
 </fieldset>
-
 		</div>
-
-	
-
 	</div>	</td>
-
 </tr>
-
 </table>
-
 </form>
-
 <? } //end else ?>
-
-
-
 </body>
-
 </html>
 
 		
