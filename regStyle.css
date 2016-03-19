@@ -1,0 +1,69 @@
+
+		#information{ width:450px; background-color:#FFFF99; text-align:center; border-color:#FF0000; border-style:dashed; border-width:thin;}
+		#RegForm{ text-align:left;}
+		#Container{ width:567px; height:450px; text-align:center;}
+		h1{ background-color:#CCCCCC;}
+		FORM {PADDING-RIGHT: 1px; PADDING-LEFT: 1px; PADDING-BOTTOM: 1px; PADDING-TOP: 1px; BACKGROUND-COLOR: #fff}
+
+.formSection {
+	BORDER-RIGHT: #c6f3ff 1px solid; BORDER-LEFT: #c6f3ff 1px solid; BORDER-TOP: #c6f3ff 1px solid; BORDER-BOTTOM: #c6f3ff 1px solid; PADDING-RIGHT: 0px;  PADDING-LEFT: 0px; PADDING-BOTTOM: 15px; MARGIN: 5px 10px;  PADDING-TOP: 0px; 
+}
+.formSection H3 { background-color:#0099FF;
+	PADDING-RIGHT: 7px; PADDING-LEFT: 7px; PADDING-BOTTOM: 7px; MARGIN: 0px 0px 5px; COLOR: #FFFFFF; PADDING-TOP: 7px
+}
+.formSection P {
+	MARGIN: 10px 2px
+}
+.tcat
+{
+	background: #000066;
+	color: #FFFFFF;
+	font: bold 10pt verdana, geneva, lucida, 'lucida grande', arial, helvetica, sans-serif;
+}
+.tcat a:link, .tcat_alink
+{
+	color: #ffffff;
+	text-decoration: none;
+}
+.tcat a:visited, .tcat_avisited
+{
+	color: #ffffff;
+	text-decoration: none;
+}
+.tcat a:hover, .tcat a:active, .tcat_ahover
+{
+	color: #DEDFBD;
+	text-decoration: underline;
+}
+.thead
+{
+	background: #000099;
+	color: #FFFFFF;
+	font: bold 11px tahoma, verdana, geneva, lucida, 'lucida grande', arial, helvetica, sans-serif;
+}
+.thead a:link, .thead_alink
+{
+	color: #FFFFFF;
+}
+.thead a:visited, .thead_avisited
+{
+	color: #FFFFFF;
+}
+.thead a:hover, .thead a:active, .thead_ahover
+{
+	color: #DEDFBD;
+}
+.panel
+{
+	background: #cccccc;
+	color: #000000;
+	padding: 10px;
+	
+	border: 2px outset;
+}
+.panelsurround
+{
+	background: #434343;
+	color: #000000;
+}
+	body{ text-align:left;}
